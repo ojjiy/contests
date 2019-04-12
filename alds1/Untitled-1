@@ -1,0 +1,26 @@
+aabaabaaa
+_010123452
+
+A[0] = -1;
+int j = -1;
+for (int i = 0; i < S.size(); i++) {
+  while (j >= 0 && S[i] != S[j]) j = A[j];
+  j++;
+  A[i+1] = j;
+}
+
+S : abbabba
+A : _0001234
+1 : ji_____
+2 : j_i____
+3 : _j_i___
+4 : __j_i__
+5 : ___j_i_
+6 : ____j_i
+
+
+
+S : aabaabaaa
+A : _010123452
+7 : _____j_i_
+8 : __j_____i
