@@ -14,19 +14,19 @@ using ld = long double;
 const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
-int c[30005];
-int len[30005];
+struct UnionFind {
+  vector<int> p;
+  UnionFind (int n) : p(n, -1) {}
+  int root(int x) { return p[x] < 0 ? x : p[x] = root(p[x]); }
+  void merge(int x, int y) { if (root(x) != root(y)) p[root(y)] = x; }
+};
 
 int main(){
-  int n;
-  cin >> n;
-  REP(i, n) cin >> c[i];
-  REP(i, n+1) len[i]=INF;
-  len[0]=c[0];
-  REP(i, n) {
-    auto it = lower_bound(len, len+i, c[i]);
-    *it=c[i];
-  }
-  REP(i, n+1) if(len[i]==INF) {cout << n-i << endl; break;}
+  int n, m;
+  cin >> n >> m;
+  int x[n];
+  int y[n];
+  int tmp;
+  REP(i, m) cin >> x[i] >> y[i] >> tmp;
   return 0;
 }

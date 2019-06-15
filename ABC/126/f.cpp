@@ -14,19 +14,6 @@ using ld = long double;
 const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
-int c[30005];
-int len[30005];
-
 int main(){
-  int n;
-  cin >> n;
-  REP(i, n) cin >> c[i];
-  REP(i, n+1) len[i]=INF;
-  len[0]=c[0];
-  REP(i, n) {
-    auto it = lower_bound(len, len+i, c[i]);
-    *it=c[i];
-  }
-  REP(i, n+1) if(len[i]==INF) {cout << n-i << endl; break;}
   return 0;
 }
