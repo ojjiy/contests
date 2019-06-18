@@ -15,5 +15,7 @@ const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
 int main(){
+
+
   return 0;
 }

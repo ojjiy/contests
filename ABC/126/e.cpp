@@ -24,9 +24,11 @@ struct UnionFind {
 int main(){
   int n, m;
   cin >> n >> m;
-  int x[n];
-  int y[n];
-  int tmp;
-  REP(i, m) cin >> x[i] >> y[i] >> tmp;
+  UnionFind res = UnionFind(n);
+  int x, y, tmp;
+  REP(i, m) { cin >> x >> y >> tmp; res.merge(--x, --y); }
+  set<int> roots;
+  REP(i, n) roots.insert(res.root(i));
+  cout << roots.size() << endl;
   return 0;
 }
