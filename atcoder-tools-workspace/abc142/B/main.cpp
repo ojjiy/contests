@@ -11,24 +11,23 @@ template <typename T> T &chmax(T &a, const T &b) {return a = max(a, b);}
 using ll = long long;
 using ld = long double;
 
-const int INF = 1e9+7;
+const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
-ll dp[1000005][2];
-ll sum[1000005];
+
+void solve(long long N, long long K, std::vector<long long> h){
+
+}
 
 int main(){
-  int n, k;
-  cin >> n >> k;
-  dp[0][0]=1;
-  dp[1][1]=k>2?1:0;
-  sum[0]=0;
-  sum[1]=dp[0][0];
-  for(int i=1; i<n; i++){
-    dp[i+1][0]=sum[i-1];
-    dp[i+1][1]=(dp[i][0]+dp[i][1])%INF;
-    sum[i+1]=(sum[i]+dp[i+1][0]+dp[i+1][1])%INF;
+    long long N;
+  scanf("%lld",&N);
+  long long K;
+  scanf("%lld",&K);
+  std::vector<long long> h(N);
+  for(int i = 0 ; i < N ; i++){
+    scanf("%lld",&h[i]);
   }
-  cout << dp[n-1][0]+dp[n-1][1] << endl;
-  return 0;
+    solve(N, K, std::move(h));
+    return 0;
 }

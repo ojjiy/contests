@@ -11,24 +11,22 @@ template <typename T> T &chmax(T &a, const T &b) {return a = max(a, b);}
 using ll = long long;
 using ld = long double;
 
-const int INF = 1e9+7;
+const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
-ll dp[1000005][2];
-ll sum[1000005];
-
 int main(){
-  int n, k;
-  cin >> n >> k;
-  dp[0][0]=1;
-  dp[1][1]=k>2?1:0;
-  sum[0]=0;
-  sum[1]=dp[0][0];
-  for(int i=1; i<n; i++){
-    dp[i+1][0]=sum[i-1];
-    dp[i+1][1]=(dp[i][0]+dp[i][1])%INF;
-    sum[i+1]=(sum[i]+dp[i+1][0]+dp[i+1][1])%INF;
+  int n;
+  string s;
+  cin >> n >> s;
+  int res = 0;
+  REP(i, 1000){
+    int digits[3] = {i/100, (i%100)/10, i%10};
+    int chk = 0;
+    for(int j=0; j<s.length(); j++){
+      if(digits[chk]==s[j]-'0') chk++;
+      if(chk==3) { res++; break; }
+    }
   }
-  cout << dp[n-1][0]+dp[n-1][1] << endl;
+  cout << res << endl;
   return 0;
 }
