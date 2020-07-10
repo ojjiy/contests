@@ -14,6 +14,22 @@ using ld = long double;
 const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
+int a[30];
+int b[30];
+int cand[60];
+
 int main(){
+  int n;
+  cin >> n;
+  REP(i, n) { cin >> a[i] >> b[i]; cand[2*i]=a[i]; cand[2*i+1]=b[i]; }
+  ll minim = (1LL<<63)-1;
+  REP(i, 2*n) REP(j, 2*n){
+    ll tmp = 0;
+    int fr = cand[i];
+    int to = cand[j];
+    REP(k, n) tmp += min(abs(fr-a[k])+abs(to-b[k]), abs(fr-b[k])+abs(to-a[k]))+abs(a[k]-b[k]);
+    chmin(minim, tmp);
+  }
+  cout << minim << endl;
   return 0;
 }

@@ -14,6 +14,23 @@ using ld = long double;
 const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
+int cand[20];
+bool dp[25][4000];
+
 int main(){
+  int n;
+  cin >> n;
+  dp[0][0] = true;
+  REP(i, n) cin >> cand[i];
+  int q, m;
+  REP(i, n) REP(j, 2000){
+    dp[i+1][j] |= dp[i][j];
+    dp[i+1][j+cand[i]] |= dp[i][j];
+  }
+  cin >> q;
+  REP(i, q){
+    cin >> m;
+    cout << (dp[n][m]? "yes": "no") << endl;
+  }
   return 0;
 }

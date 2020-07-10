@@ -14,23 +14,19 @@ using ld = long double;
 const int INF = 1e9;
 const ld eps = 1e-9, pi = acos(-1.0);
 
-bool know[12][12];
+int dp[200005];
+
+void solve(string S){
+  dp[0] = S[0]-'0'
+  REP(i, S.length()){
+    dp[i+1] = dp[i];
+    dp[i+1] = (dp[i]*10+S[S.length()-1-i]-'0')%2019;
+  }
+}
 
 int main(){
-  int n, m, x, y;
-  cin >> n >> m;
-  REP(i, m) {
-    cin >> x >> y;
-    x--; y--;
-    know[x][y] = know[y][x] = true;
-  }
-  int res = 0;
-  REP(i, 1<<12){
-    bitset<12> status(i);
-    bool tmp=true;
-    REP(j, 12) REP(k, j) if(status[j] && status[k] && !know[j][k]) tmp = false;
-    if(tmp) chmax(res, int(status.count()));
-  }
-  cout << res << endl;
-  return 0;
+    string S;
+    cin >> S;
+    solve(S);
+    return 0;
 }
